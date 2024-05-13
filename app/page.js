@@ -119,8 +119,10 @@ export default function Home() {
     slidesToScroll: 4,
     initialSlide: 0,
     rows: 2,
+    /*
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+*/
     responsive: [
       {
         breakpoint: 1024,
@@ -148,16 +150,28 @@ export default function Home() {
     ],
   };
   return (
-    <div className="flex flex-col justify-center space-y-24">
-      <img
-        className="w-full"
-        srcSet="/about/banner-1-about-sm.png 768w, /about/banner-1-about.jpg 1920w"
-        sizes="(max-width: 767px) 100vw, 1920px"
-        src="/banner-1-about.jpg"
-        alt="Banner"
-        width="1920"
-        height="275"
-      />
+    <div className="flex flex-col justify-center space-y-24 tk-neulis-sans">
+      <div className="relative w-full">
+        <img
+          className="w-full"
+          srcSet="/about/banner-1-about-sm.png 768w, /about/banner-1-about.jpg 1920w"
+          sizes="(max-width: 767px) 100vw, 1920px"
+          src="/banner-1-about.jpg"
+          alt="Banner"
+          width="1920"
+          height="275"
+        />
+        <div className="absolute left-4 lg:left-10 xl:left-24 2xl:left-10 top-3 lg:top-6 xl:top-12 text-white space-y-2 w-1/2 xl:w-2/5">
+          <p className="text-lg lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold">
+            UDĚLEJTE SI RADOST NOVÝM AUTOMOBILEM
+          </p>
+          <p className="text-xs md:text-base xl:text-lg">
+            Jsme prodejce ojetých vozů s českým původem, doloženou servisní
+            historií a osobním přístupem.
+          </p>
+        </div>
+      </div>
+
       <div className="space-y-6">
         <p className="text-2xl font-bold text-center">Dobrý den,</p>
         <p className="text-lg text-center">
