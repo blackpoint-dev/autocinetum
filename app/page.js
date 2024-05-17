@@ -1,156 +1,12 @@
 // pages/index.js
 "use client";
-import React, { Component } from "react";
-import { useEffect, useState } from "react";
-import { fetchEntries } from "../lib/contentful";
+import React from "react";
+import Listings from "@/components/listings";
 import Image from "next/image";
-import Link from "next/link";
-import Slider from "react-slick";
-
-const ArrowStyles = {
-  display: "block",
-  background: "transparent",
-  border: "none",
-  zIndex: 1,
-};
-
-// Custom Previous Arrow
-const PrevArrow = ({ className, style, onClick }) => {
-  return (
-    <>
-      <style jsx>{`
-        .custom-slick-prev,
-        .custom-slick-next {
-          background: transparent !important;
-          border: none !important;
-          height: 32px;
-          width: 32px;
-        }
-        .custom-slick-prev:before,
-        .custom-slick-next:before {
-          display: none;
-        }
-      `}</style>
-      <div
-        className={`custom-slick-prev ${className}`}
-        style={{
-          ...style,
-          display: "block",
-          zIndex: 1,
-          left: "-40px",
-          top: "50%",
-          transform: "translateY(-50%)",
-        }}
-        onClick={onClick}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path
-            fill="#000000"
-            d="m8.82 12l7.715 7.715q.22.222.218.53t-.224.528t-.529.221t-.529-.22L7.83 13.136q-.242-.243-.354-.54T7.363 12t.112-.596t.354-.54L15.47 3.22q.221-.221.532-.218q.31.003.532.224t.22.529t-.22.529z"
-          />
-        </svg>
-      </div>
-    </>
-  );
-};
-
-// Custom Next Arrow
-const NextArrow = ({ className, style, onClick }) => {
-  return (
-    <>
-      <style jsx>{`
-        .custom-slick-prev,
-        .custom-slick-next {
-          background: transparent !important;
-          border: none !important;
-          height: 32px;
-          width: 32px;
-        }
-        .custom-slick-prev:before,
-        .custom-slick-next:before {
-          display: none;
-        }
-      `}</style>
-      <div
-        className={`custom-slick-next ${className}`}
-        style={{
-          ...style,
-          display: "block",
-          zIndex: 1,
-          right: "-40px",
-          top: "50%",
-          transform: "translateY(-50%)",
-        }}
-        onClick={onClick}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          transform="rotate(180)"
-        >
-          <path
-            fill="#000000"
-            d="m8.82 12l7.715 7.715q.22.222.218.53t-.224.528t-.529.221t-.529-.22L7.83 13.136q-.242-.243-.354-.54T7.363 12t.112-.596t.354-.54L15.47 3.22q.221-.221.532-.218q.31.003.532.224t.22.529t-.22.529z"
-          />
-        </svg>
-      </div>
-    </>
-  );
-};
 
 export default function Home() {
-  const [carListing, setCarListing] = useState([]);
-
-  useEffect(() => {
-    async function getEntries() {
-      const allEntries = await fetchEntries();
-      setCarListing(allEntries);
-    }
-
-    getEntries();
-  }, []);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    lazyLoad: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    rows: 2,
-    /*
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-*/
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
   return (
-    <div className="flex flex-col justify-center space-y-24 tk-neulis-sans">
+    <div className="flex flex-col justify-center space-y-24">
       <div className="relative w-full">
         <img
           className="w-full"
@@ -260,6 +116,7 @@ export default function Home() {
           width="1920"
           height="150"
         />
+        {/*
         <div className="absolute top-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Image
             priority
@@ -269,50 +126,9 @@ export default function Home() {
             alt="Car"
           />
         </div>
+        */}
       </div>
-      <div className="text-brown mx-4">
-        <p className="text-2xl font-bold text-center">Aktuální nabídka</p>
-        <div className="w-full mx-auto px-2 md:px-8 lg:px-32 mt-12">
-          <Slider {...settings}>
-            {carListing.map(({ fields }) => (
-              <div className="px-3 my-3" key={fields.modelName}>
-                <Link
-                  href="/offer"
-                  passHref
-                  className="block overflow-hidden shadow-sm transform transition duration-200 ease-in-out hover:scale-105"
-                >
-                  <div className="relative w-full h-44 overflow-hidden">
-                    {fields.mainPhoto && fields.mainPhoto.fields.file.url && (
-                      <Image
-                        className="object-cover"
-                        objectPosition="center"
-                        layout="fill"
-                        src={`https:${fields.mainPhoto.fields.file.url}`}
-                        alt="Car photo"
-                      />
-                    )}
-                  </div>
-                  <div className="bg-gradient-to-r from-green-500 to-blue-500 h-0.5 w-full"></div>
-                  <div className="bg-light p-3 space-y-2 text-sm">
-                    <h2 className="text-lg font-bold">{fields.modelName}</h2>
-                    <p>{fields.description}</p>
-                    <div>
-                      <p>{fields.price} KČ</p>
-                      <div className="flex flex-row justify-between">
-                        <p>
-                          {fields.vat
-                            ? "možnost odpočtu DPH"
-                            : "ne možnost odpočtu DPH"}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </Slider>
-        </div>
-      </div>
+      <Listings />
       <div>
         <Image
           priority
