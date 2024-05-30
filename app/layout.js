@@ -28,9 +28,7 @@ export default function RootLayout({ children }) {
       >
         <Navbar />
         {children}
-        <div className="mt-24">
-          <Footer />
-        </div>
+        <Footer />
       </body>
     </html>
   );

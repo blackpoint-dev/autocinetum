@@ -6,17 +6,23 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center space-y-24">
+    <div className="flex flex-col justify-center space-y-24 pb-24">
       <div className="relative w-full">
-        <img
-          className="w-full"
-          srcSet="/about/banner-1-about-sm.png 768w, /about/banner-1-about.jpg 1920w"
-          sizes="(max-width: 767px) 100vw, 1920px"
-          src="/banner-1-about.jpg"
-          alt="Banner"
-          width="1920"
-          height="275"
-        />
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="/about/banner-1-about-sm.png"
+          />
+          <Image
+            className="w-full"
+            src="/about/banner-1-about.jpg"
+            alt="Banner"
+            width={1920}
+            height={275}
+            layout="responsive"
+          />
+        </picture>
+
         <div className="absolute left-4 lg:left-10 xl:left-24 2xl:left-10 top-3 lg:top-6 xl:top-12 text-white space-y-2 w-1/2 xl:w-2/5">
           <p className="text-lg lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold">
             UDĚLEJTE SI RADOST NOVÝM AUTOMOBILEM
@@ -107,15 +113,20 @@ export default function Home() {
       </div>
 
       <div className="relative w-full">
-        <img
-          className="w-full"
-          srcSet="/about/banner-2-about-sm.png 768w, /about/banner-2-about.jpg 1920w"
-          sizes="(max-width: 767px) 100vw, 1920px"
-          src="/about/banner-2-about.jpg"
-          alt="Banner"
-          width="1920"
-          height="150"
-        />
+        <picture>
+          <source
+            media="(max-width: 767px)"
+            srcSet="/about/banner-2-about-sm.png"
+          />
+          <Image
+            className="w-full"
+            src="/about/banner-2-about.jpg"
+            alt="Banner"
+            width={1920}
+            height={150}
+            layout="responsive"
+          />
+        </picture>
         {/*
         <div className="absolute top-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Image
@@ -129,14 +140,93 @@ export default function Home() {
         */}
       </div>
       <Listings />
-      <div>
-        <Image
-          priority
-          src="/about/testimonials-1-about.jpg"
-          width={1920}
-          height={260}
-          alt="Car"
-        />
+      <div className="relative w-full">
+        <picture>
+          <source
+            media="(max-width: 1280px)"
+            srcSet="/about/testimonials-sm.png"
+          />
+          <Image
+            className="w-full"
+            src="/about/testimonials-1-about.jpg"
+            alt="Car"
+            width={1920}
+            height={260}
+            layout="responsive"
+          />
+        </picture>
+        <div className="absolute inset-x-0 inset-y-0 xl:left-24 2xl:left-10 top-0 xl:top-3 text-white space-y-1 sm:space-y-2 md:space-y-4 xl:space-y-1 w-full xl:w-2/5 flex flex-col items-center justify-center text-center">
+          <p className="text-lg md:text-2xl lg:text-4xl xl:text-lg 2xl:text-2xl">
+            Roman
+          </p>
+          <p className="text-2xl lg:text-4xl xl:text-lg 2xl:text-2xl font-bold">
+            Škoda Octavia IV Combi
+          </p>
+          <div className="flex flex-row">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#ffffff"
+                d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#ffffff"
+                d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#ffffff"
+                d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#ffffff"
+                d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#ffffff"
+                d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"
+              />
+            </svg>
+          </div>
+          <div className="w-3/4 md:w-1/2 xl:w-3/4 text-base md:text-2xl lg:text-4xl xl:text-base">
+            <p>
+              Auto mi bylo osobně hezky prezentováno a čisté, bez známek většího
+              opotřebení. Přátelský prodejce poskytl maximum užitečných
+              informací.
+            </p>
+          </div>
+        </div>
       </div>
       <div className="space-y-16">
         <div>
