@@ -1,7 +1,7 @@
 // pages/index.js
 "use client";
 import React from "react";
-import Listings from "@/components/listings";
+import Listings from "../components/listings/index.js";
 import Image from "next/image";
 
 export default function Home() {
