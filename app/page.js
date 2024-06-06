@@ -23,7 +23,7 @@ export default function Home() {
           />
         </picture>
 
-        <div className="absolute left-4 lg:left-10 xl:left-24 2xl:left-10 top-3 lg:top-6 xl:top-12 text-white space-y-2 w-1/2 xl:w-2/5">
+        <div className="absolute left-4 lg:left-10 xl:left-24 2xl:left-10 top-3 lg:top-4 xl:top-8 2xl:top-12 text-white space-y-2 w-1/2 xl:w-2/5">
           <p className="text-lg lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold">
             UDĚLEJTE SI RADOST NOVÝM AUTOMOBILEM
           </p>
@@ -111,11 +111,10 @@ export default function Home() {
           </p>
         </div>
       </div>
-
       <div className="relative w-full">
         <picture>
           <source
-            media="(max-width: 767px)"
+            media="(max-width: 1023px)"
             srcSet="/about/banner-2-about-sm.png"
           />
           <Image
@@ -128,16 +127,29 @@ export default function Home() {
           />
         </picture>
         {/*
-        <div className="absolute top-12 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute top-0 xl:top-4 2xl:top-6 left-0 lg:left-16 xl:left-32 flex flex-col text-center w-1/3">
+          <p className="text-2xl lg:text-2xl xl:text-4xl 2xl:text-4xl font-bold text-white">
+            12 let
+          </p>
+          <p className="text-base xl:text-lg 2xl:text-xl text-white">
+            máme dvanáctiletou zkušenost na trhu s ojetými vozy
+          </p>
+        </div>{" "}
+        */}
+        <div className="absolute top-8 sm:top-20 md:top-24 lg:top-6 xl:top-10 2xl:top-14 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Image
             priority
             src="/about/car.png"
+            alt="Car"
             width={306.5}
             height={157.4}
-            alt="Car"
+            sizes="(max-width: 640px) 50vw, (max-width: 768px) 35vw, (max-width: 1023px) 40vw, (max-width: 1280px) 20vw, (max-width: 1536px) 20vw, 20vw"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
           />
         </div>
-        */}
       </div>
       <Listings />
       <div className="relative w-full">
